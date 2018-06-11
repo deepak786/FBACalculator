@@ -24,6 +24,7 @@ public class FBAFee {
     private double amazonReferralFee;
     private double variableClosingFee;
     private double revenue;
+    private double shippingCredit;
 
     public double getFulfillmentFee() {
         return fulfillmentFee;
@@ -73,6 +74,14 @@ public class FBAFee {
         this.revenue = revenue;
     }
 
+    public double getShippingCredit() {
+        return shippingCredit;
+    }
+
+    public void setShippingCredit(double shippingCredit) {
+        this.shippingCredit = shippingCredit;
+    }
+
     public double getSellerProceeds() {
         double sellerProceeds = getRevenue() -
                 (getAmazonReferralFee()
@@ -90,7 +99,8 @@ public class FBAFee {
                 + "\nVariable Closing Fee: \t$" + getVariableClosingFee()
                 + "\nFulfillment Fee: \t$" + getFulfillmentFee()
                 + "\nMonthly Storage Fee: \t$" + getMonthlyStorageFee()
-                + "\nSeller Proceeds: \t$" + getSellerProceeds();
+                + "\nSeller Proceeds: \t$" + getSellerProceeds()
+                + "\nShipping Credit: \t$" + getShippingCredit();
     }
 
     private double formatDouble(double val) {

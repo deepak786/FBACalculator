@@ -271,6 +271,19 @@ public class Constants {
         put("Video Games & Video Game Consoles", 1.80);
     }};
 
+    // shipping credit
+    static final HashMap<String, Double> SHIPPING_CREDIT = new HashMap<String, Double>() {{
+        put("Books", 3.99);
+        put("DVD", 3.99);
+        put("Music", 3.99);
+        put("Software & Computer", 3.99);
+        put("Software & Computer Games", 3.99);
+        put("Video Games", 3.99);
+        put("Video", 3.99);
+        put("Video Game Consoles", 3.99);
+        put("Video Games & Video Game Consoles", 3.99);
+    }};
+
     // Product Categories
     public static final ArrayList<String> PRODUCT_CATEGORIES = new ArrayList<String>() {{
         add("Amazon Device Accessories");

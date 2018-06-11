@@ -282,6 +282,16 @@ public class FBA {
     }
 
     /**
+     * get shipping credit
+     */
+    private double getShippingCredit(String category, double weight) {
+        if (Constants.SHIPPING_CREDIT.containsKey(category)) {
+            return Constants.SHIPPING_CREDIT.get(category);
+        }
+        return formatDouble(4.49 + (0.50 * Math.ceil(weight)));
+    }
+
+    /**
      * get dimensional weight
      */
     private double getDimensionalWeight(double dimensions[]) {
@@ -350,7 +360,7 @@ public class FBA {
         fbaFee.setSizeTier(getSizeTier(builder.dimensions, builder.weight));
         fbaFee.setVariableClosingFee(getVariableClosingFee(builder.getCategory()));
         fbaFee.setAmazonReferralFee(formatDouble(getReferralFee(builder.getCategory(), builder.getPrice())));
-
+        fbaFee.setShippingCredit(getShippingCredit(builder.getCategory(), builder.weight));
         return fbaFee;
     }
 
