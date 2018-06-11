@@ -232,7 +232,7 @@ public class FBA {
                 break;
             case "Shoes, Handbags & Sunglasses":
                 if (price > 75) {
-                    return Math.max((75 * referralFeePer) + ((price - 75) * 0.18), minReferralFee);
+                    return Math.max(price * 0.18, minReferralFee);
                 }
                 break;
             case "Watches":
