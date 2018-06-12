@@ -78,6 +78,8 @@ public class FBA {
      * calculate Fulfillment Fees
      */
     private double getFulfillmentFees() {
+        if (builder.length == 0 && builder.width == 0 && builder.height == 0 && builder.weight == 0)
+            return 0;
         double dimensions[] = builder.dimensions;
         double weight = builder.weight;
 
