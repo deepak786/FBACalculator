@@ -287,6 +287,7 @@ public class FBA {
      * get shipping credit
      */
     private double getShippingCredit(String category, double weight) {
+        if (weight == 0) return 0;
         if (Constants.SHIPPING_CREDIT.containsKey(category)) {
             return Constants.SHIPPING_CREDIT.get(category);
         }
