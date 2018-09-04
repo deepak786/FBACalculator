@@ -200,8 +200,15 @@ public class FBA {
      * get amazon referral fee
      */
     private double getReferralFee(String category, double price) {
-        double referralFeePer = Constants.REFERRAL_FEE_PERCENTAGE.get(category);
-        double minReferralFee = Constants.REFERRAL_FEE_MINIMUM.get(category);
+        double referralFeePer;
+        double minReferralFee;
+        if (Constants.REFERRAL_FEE_PERCENTAGE.containsKey(category)) {
+            referralFeePer = Constants.REFERRAL_FEE_PERCENTAGE.get(category);
+            minReferralFee = Constants.REFERRAL_FEE_MINIMUM.get(category);
+        } else {
+            referralFeePer = Constants.REFERRAL_FEE_PERCENTAGE.get("Everything Else");
+            minReferralFee = Constants.REFERRAL_FEE_MINIMUM.get("Everything Else");
+        }
 
         switch (category) {
             case "Collectible Coins":
@@ -214,6 +221,7 @@ public class FBA {
                             + ((price - 1000) * 0.06);
                 }
                 break;
+            case "Cell Phones & Accessories":
             case "Electronics Accessories":
             case "Electronics (Accessories)":
                 if (price > 100) {
@@ -229,7 +237,8 @@ public class FBA {
                 break;
             case "Grocery & Gourmet Food":
                 if (price > 15) {
-                    return Math.max((15 * referralFeePer) + ((price - 15) * 0.15), minReferralFee);
+//                    return Math.max((15 * referralFeePer) + ((price - 15) * 0.15), minReferralFee);
+                    return Math.max(price * 0.15, minReferralFee);
                 }
                 break;
             case "Shoes, Handbags & Sunglasses":
@@ -255,6 +264,8 @@ public class FBA {
                     return (100 * referralFeePer) + (900 * 0.1) + ((price - 1000) * 0.06);
                 }
                 break;
+            case "Collectibles & Fine Art":
+            case "Collectibles & Fine Arts":
             case "Fine Art":
                 if (price > 100 && price <= 1000) {
                     return Math.max(100 * referralFeePer, minReferralFee)
